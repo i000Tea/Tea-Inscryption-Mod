@@ -39,20 +39,20 @@ namespace CardLoaderMod
             List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = new List<CardAppearanceBehaviour.Appearance>();
             appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.RareCardBackground);
 
-            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll",""),"Artwork/eightfuckingbears.png"));
-            Texture2D tex = new Texture2D(2,2);
+            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll", ""), "Artwork/eightfuckingbears.png"));
+            Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(imgBytes);
 
-            NewCard.Add("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
+            NewCard.Add("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature, "8 fucking bears!", 32, 48, description: "Kill this abomination please", cost: 3, appearanceBehaviour: appearanceBehaviour, tex: tex);
         }
 
         private NewAbility AddAbility()
-    		{
+        {
             AbilityInfo info = ScriptableObject.CreateInstance<AbilityInfo>();
             info.powerLevel = 0;
             info.rulebookName = "Example Ability";
             info.rulebookDescription = "Example ability which adds a PiggyBank!";
-            info.metaCategories = new List<AbilityMetaCategory> {AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part1Modular};
+            info.metaCategories = new List<AbilityMetaCategory> { AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part1Modular };
 
             List<DialogueEvent.Line> lines = new List<DialogueEvent.Line>();
             DialogueEvent.Line line = new DialogueEvent.Line();
@@ -60,60 +60,67 @@ namespace CardLoaderMod
             lines.Add(line);
             info.abilityLearnedDialogue = new DialogueEvent.LineSet(lines);
 
-            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll",""),"Artwork/new.png"));
-            Texture2D tex = new Texture2D(2,2);
+            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll", ""), "Artwork/new.png"));
+            Texture2D tex = new Texture2D(2, 2);
             tex.LoadImage(imgBytes);
 
-            NewAbility ability = new NewAbility(info,typeof(NewTestAbility),tex,AbilityIdentifier.GetAbilityIdentifier(PluginGuid, info.rulebookName));
+            NewAbility ability = new NewAbility(info, typeof(NewTestAbility), tex, AbilityIdentifier.GetAbilityIdentifier(PluginGuid, info.rulebookName));
             NewTestAbility.ability = ability.ability;
             return ability;
-    		}
+        }
 
         private void ChangeWolf()
         {
-          List<Ability> abilities = new List<Ability> {NewTestAbility.ability};
-          new CustomCard("Wolf") {baseAttack=10, abilities=abilities};
+            List<Ability> abilities = new List<Ability> { NewTestAbility.ability };
+            new CustomCard("Wolf") { baseAttack = 10, abilities = abilities };
         }
 
         public class NewTestAbility : AbilityBehaviour
-      	{
-        		public override Ability Ability
-        		{
-          			get
-          			{
-          				return ability;
-          			}
-        		}
+        {
+            public override Ability Ability
+            {
+                get
+                {
+                    return ability;
+                }
+            }
 
             public static Ability ability;
-
-        		public override bool RespondsToResolveOnBoard()
-        		{
-        			   return true;
-        		}
-
-        		public override IEnumerator OnResolveOnBoard()
-        		{
-          			yield return base.PreSuccessfulTriggerSequence();
-          			yield return new WaitForSeconds(0.2f);
-          			Singleton<ViewManager>.Instance.SwitchToView(View.Default, false, false);
-          			yield return new WaitForSeconds(0.25f);
-          			if (RunState.Run.consumables.Count < 3)
-          			{
-            				RunState.Run.consumables.Add("PiggyBank");
-            				Singleton<ItemsManager>.Instance.UpdateItems(false);
-          			}
-          			else
-          			{
-            				base.Card.Anim.StrongNegationEffect();
-            				yield return new WaitForSeconds(0.2f);
-            				Singleton<ItemsManager>.Instance.ShakeConsumableSlots(0f);
-          			}
-          			yield return new WaitForSeconds(0.2f);
-          			yield return base.LearnAbility(0f);
-          			yield break;
-          		}
-      	}
+            /// <summary>
+            /// 响应解决船上问题
+            /// </summary>
+            /// <returns></returns>
+            public override bool RespondsToResolveOnBoard()
+            {
+                return true;
+            }
+            /// <summary>
+            /// 船上决心
+            /// </summary>
+            /// <returns></returns>
+            public override IEnumerator OnResolveOnBoard()
+            {
+                yield return base.PreSuccessfulTriggerSequence();
+                yield return new WaitForSeconds(0.2f);
+                Singleton<ViewManager>.Instance.SwitchToView(View.Default, false, false);
+                yield return new WaitForSeconds(0.25f);
+                if (RunState.Run.consumables.Count < 3)
+                {
+                    // 零钱罐
+                    RunState.Run.consumables.Add("PiggyBank");
+                    Singleton<ItemsManager>.Instance.UpdateItems(false);
+                }
+                else
+                {
+                    base.Card.Anim.StrongNegationEffect();
+                    yield return new WaitForSeconds(0.2f);
+                    Singleton<ItemsManager>.Instance.ShakeConsumableSlots(0f);
+                }
+                yield return new WaitForSeconds(0.2f);
+                yield return base.LearnAbility(0f);
+                yield break;
+            }
+        }
     }
 
 }

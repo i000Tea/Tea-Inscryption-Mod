@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj": {}
+    "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj": {}
   },
   "projects": {
-    "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj": {
+    "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
+        "projectUniqueName": "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
         "projectName": "CardLoaderMod",
-        "projectPath": "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
+        "projectPath": "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
         "packagesPath": "C:\\Users\\Tea\\.nuget\\packages\\",
-        "outputPath": "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\obj\\",
+        "outputPath": "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\NuGet.Config",
+          "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\NuGet.Config",
           "C:\\Users\\Tea\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

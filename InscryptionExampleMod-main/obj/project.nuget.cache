@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qWjyoY1/mldOV5rAtMyDjvsQlQwkB7RWfkh4TrucQ+CBL63+caawJKOKV/DYinHm+CPXMAMBCOkn7VmhjjgmWg==",
+  "dgSpecHash": "EqhM0wfm2LsqJJXbf3ntaohItwbZZFGrszE0+qY7ZUOrEZL6BaQ6apzTN2Ld0r9Yj2y8chu+BDa6Nekz78IWQQ==",
   "success": true,
-  "projectFilePath": "D:\\UINTY\\Inscryption Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
+  "projectFilePath": "D:\\UINTY\\Tea-Inscryption-Mod\\InscryptionExampleMod-main\\CardLoaderMod.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tea\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\Tea\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",
